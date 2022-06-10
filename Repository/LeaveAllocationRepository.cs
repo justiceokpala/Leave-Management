@@ -34,6 +34,11 @@ namespace Leave_management.Repository
             throw new NotImplementedException();
         }
 
+        public bool isExists(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool Save()
         {
             throw new NotImplementedException();

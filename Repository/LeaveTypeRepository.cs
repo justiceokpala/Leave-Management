@@ -17,22 +17,27 @@ namespace Leave_management.Repository
         }
         public bool create(LeaveType entity)
         {
-            throw new NotImplementedException();
+            _db.LeaveTypes.Add(entity);
+            return Save();
         }
 
         public bool Delete(LeaveType entity)
         {
-            throw new NotImplementedException();
+            _db.LeaveTypes.Remove(entity);
+            return Save();
         }
 
         public ICollection<LeaveType> FindAll()
         {
+            var leaveType = _db.LeaveTypes.ToList();
+            return leaveType;
             throw new NotImplementedException();
         }
 
         public LeaveType FindById(int id)
         {
-            throw new NotImplementedException();
+            var leaveType = _db.LeaveTypes.Find(id);
+            return leaveType;
         }
 
         public ICollection<LeaveType> GetEmployeesByLeaveType(int id)
@@ -40,14 +45,22 @@ namespace Leave_management.Repository
             throw new NotImplementedException();
         }
 
+        public bool isExists(int id)
+        {
+            var Exists = _db.LeaveTypes.Any(q => q.Id == id);
+            return Exists;
+        }
+
         public bool Save()
         {
-            throw new NotImplementedException();
+            var changes = _db.SaveChanges();
+            return changes > 0;
         }
 
         public bool Update(LeaveType entity)
         {
-            throw new NotImplementedException();
+            _db.LeaveTypes.Update(entity);
+            return Save();
         }
     }
 }
